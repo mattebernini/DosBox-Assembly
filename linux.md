@@ -1,1 +1,5 @@
-aprire con wine runDosBox.bat
+- aprire con wine runDosBox.bat
+- si aprirà la finestra di DosBox che si riferirà a questa cartella di lavoro
+- per assemblare: *ASSEMBLE file.s*
+- verrà creato automaticamente file.exe
+- sempre su DosBox *file.exe* per eseguirlo
