@@ -1,0 +1,1 @@
+aprire con wine runDosBox.bat

@@ -1,0 +1,93 @@
+GAS LISTING demo11.s 			page 1
+
+
+   1              	# Visualizza sul monitor ? e quindi preleva dalla tastiera le
+   2              	# cifre (al piu' 10) di un numero naturale decimale. Converte
+   3              	# in binario il numero prelevato e lo immette nel registro EAX.
+   4              	# Lo riconverte poi in decimale e lo visualizza sul monitor.
+   5              	# Utilizza i sottoprogrammi indecimal_long e outdecimal_long.
+   6              	
+   7              	.TEXT
+   8 0000 90       	_main: NOP
+   9 0001 B03F     	       MOV  $'?',%AL
+  10 0003 E8250000 	       CALL outchar
+  10      00
+  11              	
+  12 0008 E89E0000 	       CALL newline
+  12      00
+  13 000d E8F70200 	       CALL indecimal_long
+  13      00
+  14 0012 E8940000 	       CALL newline
+  14      00
+  15 0017 E8360200 	       CALL outdecimal_long
+  15      00
+  16              	
+  17 001c E84A0300 	       CALL exit
+  17      00
+  18              	
+  19              	
+  20              	.INCLUDE "C:/amb_GAS/utility" 
+GAS LISTING demo11.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fake
+            demo11.s:8      .text:00000000 _main
+  C:/amb_GAS/utility:44     .text:0000002d outchar
+  C:/amb_GAS/utility:166    .text:000000ab newline
+  C:/amb_GAS/utility:465    .text:00000309 indecimal_long
+  C:/amb_GAS/utility:375    .text:00000252 outdecimal_long
+  C:/amb_GAS/utility:514    .text:0000036b exit
+  C:/amb_GAS/utility:8      .text:00000021 inchar
+  C:/amb_GAS/utility:114    .text:00000038 inbyte
+  C:/amb_GAS/utility:306    .text:000001dc inhexchar
+  C:/amb_GAS/utility:345    .text:0000021e HA2B8
+  C:/amb_GAS/utility:127    .text:0000005a inword
+  C:/amb_GAS/utility:133    .text:00000067 inlong
+  C:/amb_GAS/utility:134    .text:00000067 indword
+  C:/amb_GAS/utility:140    .text:00000075 outbyte
+  C:/amb_GAS/utility:327    .text:000001fe B8HA2
+  C:/amb_GAS/utility:150    .text:0000008b outword
+  C:/amb_GAS/utility:157    .text:0000009a outlong
+  C:/amb_GAS/utility:158    .text:0000009a outdword
+  C:/amb_GAS/utility:180    .text:000000bc pause
+  C:/amb_GAS/utility:181    .text:000000bd pause0
+  C:/amb_GAS/utility:183    .text:000000c6 pause1
+  C:/amb_GAS/utility:185    .text:000000cf pause2
+  C:/amb_GAS/utility:187    .text:000000d8 pause3
+  C:/amb_GAS/utility:189    .text:000000e1 pause4
+  C:/amb_GAS/utility:191    .text:000000ea pause5
+  C:/amb_GAS/utility:193    .text:000000f3 pause6
+  C:/amb_GAS/utility:195    .text:000000fc pause7
+  C:/amb_GAS/utility:197    .text:00000105 pause8
+  C:/amb_GAS/utility:199    .text:0000010e pause9
+  C:/amb_GAS/utility:221    .text:00000142 inline
+  C:/amb_GAS/utility:269    .text:000001a1 outline
+  C:/amb_GAS/utility:289    .text:000001c3 outmess
+  C:/amb_GAS/utility:318    .text:000001f2 B4HA1
+  C:/amb_GAS/utility:337    .text:00000214 HA1B4
+  C:/amb_GAS/utility:339    .text:00000218 sub_0x30
+  C:/amb_GAS/utility:357    .text:00000238 outdecimal_byte
+  C:/amb_GAS/utility:358    .text:00000238 outdecimal_tiny
+  C:/amb_GAS/utility:364    .text:00000245 outdecimal_word
+  C:/amb_GAS/utility:365    .text:00000245 outdecimal_short
+  C:/amb_GAS/utility:372    .data:00000032 resti_cifre
+  C:/amb_GAS/utility:412    .text:000002a2 long_L4013K
+  C:/amb_GAS/utility:416    .text:000002ad ciclolongL4013K
+  C:/amb_GAS/utility:443    .text:000002dd indecimal_byte
+  C:/amb_GAS/utility:444    .text:000002dd indecimal_tiny
+  C:/amb_GAS/utility:474    .data:00000041 num_cifre_1eWK7
+  C:/amb_GAS/utility:477    .text:00000316 converti_1eWK6
+  C:/amb_GAS/utility:454    .text:000002f2 indecimal_word
+  C:/amb_GAS/utility:455    .text:000002f2 indecimal_short
+  C:/amb_GAS/utility:473    .data:0000003d prodotti_parziali_1eWK7
+  C:/amb_GAS/utility:479    .text:00000318 P_di_0_1eWK7
+  C:/amb_GAS/utility:481    .text:00000322 ciclo_1eWK7
+  C:/amb_GAS/utility:504    .text:00000364 fine_1eWK7
+  C:/amb_GAS/utility:483    .text:0000032b new_cifra_1eWK7
+  C:/amb_GAS/utility:521    .text:00000380 waitQ_LZc247A
+
+GAS LISTING demo11.s 			page 3
+
+
+NO UNDEFINED SYMBOLS
