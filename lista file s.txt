@@ -1,0 +1,1 @@
+es1,    trasforma messaggio in lettere maiuscole
