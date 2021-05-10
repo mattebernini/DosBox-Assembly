@@ -1,94 +1,90 @@
-GAS LISTING c:/amb_gas/gas/tmp/ccm5sAHh.s 			page 1
+GAS LISTING ES2.s 			page 1
 
 
-   1              	# 1 "ES1.S"
-   2              	# 1 "c:/work//"
-   0:c:/work//     **** 
-   1              	# legge da terminale messaggio in lettere
-   0:<built-in>    **** 
-   0:<command line> **** 
-   1:c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver **** #include <sys/version.h>
-   1:c:/amb_gas/gas/include/sys/version.h **** /* Copyright (C) 1999 DJ Delorie, see COPYING.DJ for details */
-   2:c:/amb_gas/gas/include/sys/version.h **** /* Copyright (C) 1998 DJ Delorie, see COPYING.DJ for details */
-   2              	...
-   2              	# stampa messaggio tutto maiuscolo
-   3              	
-   4              	.GLOBAL _main
-   5              	.INCLUDE "C:/amb_GAS/utility" 
-GAS LISTING c:/amb_gas/gas/tmp/ccm5sAHh.s 			page 2
+   1              	/*
+   2              	    Scrivere un programma in Assembler che svolge i seguenti compiti
+   3              	        1. richiede in ingresso due numeri naturali X ed Y in base 10, X a 6 cifre ed Y a 1 cifra, 
+   4              	        gli opportuni controlli. In particolare:
+   5              	            • Legge e fa eco di cifre in base 10, ignora e non fa eco di caratteri inattesi
+   6              	            • Vengono accettate soltanto codifiche dal numero esatto di cifre
+   7              	            • L’eco dei due input è fatto su due righe distinte
+   8              	        2. se Y = 0 termina, altrimenti
+   9              	        3. lascia una riga bianca ed esegue la divisione in base 10 di X per Y , per passaggi succe
+  10              	        stampando i risultati intermedi formattati come da esempio.
+  11              	        4. lascia una riga bianca e ritorna al punto 1.
+  12              	    
+  13              	    Si ponga attenzione alla formattazione di questo file, che fa parte delle specifiche.
+  14              	*/
+  15              	.GLOBAL _main
+  16              	.INCLUDE "c:/amb_GAS/utility"
+GAS LISTING ES2.s 			page 2
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 ES1.S
-                            *ABS*:00000000 <command line>
-                            *ABS*:00000000 c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver
-                            *ABS*:00000000 c:/amb_gas/gas/include/sys/version.h
-                            *ABS*:00000000 c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver
-                            *ABS*:00000000 <command line>
-                            *ABS*:00000000 <built-in>
-                            *ABS*:00000000 c:/work//
-                            *ABS*:00000000 ES1.S
-               ES1.S:12     .text:0000036c _main
-  C:/amb_GAS/utility:8      .text:00000000 inchar
-  C:/amb_GAS/utility:44     .text:0000000c outchar
-  C:/amb_GAS/utility:114    .text:00000017 inbyte
-  C:/amb_GAS/utility:306    .text:000001bb inhexchar
-  C:/amb_GAS/utility:345    .text:000001fd HA2B8
-  C:/amb_GAS/utility:127    .text:00000039 inword
-  C:/amb_GAS/utility:133    .text:00000046 inlong
-  C:/amb_GAS/utility:134    .text:00000046 indword
-  C:/amb_GAS/utility:140    .text:00000054 outbyte
-  C:/amb_GAS/utility:327    .text:000001dd B8HA2
-  C:/amb_GAS/utility:150    .text:0000006a outword
-  C:/amb_GAS/utility:157    .text:00000079 outlong
-  C:/amb_GAS/utility:158    .text:00000079 outdword
-  C:/amb_GAS/utility:166    .text:0000008a newline
-  C:/amb_GAS/utility:180    .text:0000009b pause
-  C:/amb_GAS/utility:181    .text:0000009c pause0
-  C:/amb_GAS/utility:183    .text:000000a5 pause1
-  C:/amb_GAS/utility:185    .text:000000ae pause2
-  C:/amb_GAS/utility:187    .text:000000b7 pause3
-  C:/amb_GAS/utility:189    .text:000000c0 pause4
-  C:/amb_GAS/utility:191    .text:000000c9 pause5
-  C:/amb_GAS/utility:193    .text:000000d2 pause6
-  C:/amb_GAS/utility:195    .text:000000db pause7
-  C:/amb_GAS/utility:197    .text:000000e4 pause8
-  C:/amb_GAS/utility:199    .text:000000ed pause9
-  C:/amb_GAS/utility:221    .text:00000121 inline
-  C:/amb_GAS/utility:269    .text:00000180 outline
-  C:/amb_GAS/utility:289    .text:000001a2 outmess
-  C:/amb_GAS/utility:318    .text:000001d1 B4HA1
-  C:/amb_GAS/utility:337    .text:000001f3 HA1B4
-  C:/amb_GAS/utility:339    .text:000001f7 sub_0x30
-  C:/amb_GAS/utility:357    .text:00000217 outdecimal_byte
-  C:/amb_GAS/utility:358    .text:00000217 outdecimal_tiny
-  C:/amb_GAS/utility:375    .text:00000231 outdecimal_long
-  C:/amb_GAS/utility:364    .text:00000224 outdecimal_word
-  C:/amb_GAS/utility:365    .text:00000224 outdecimal_short
-  C:/amb_GAS/utility:372    .data:00000032 resti_cifre
-  C:/amb_GAS/utility:412    .text:00000281 long_L4013K
-  C:/amb_GAS/utility:416    .text:0000028c ciclolongL4013K
-  C:/amb_GAS/utility:443    .text:000002bc indecimal_byte
-  C:/amb_GAS/utility:444    .text:000002bc indecimal_tiny
-  C:/amb_GAS/utility:474    .data:00000041 num_cifre_1eWK7
-  C:/amb_GAS/utility:477    .text:000002f5 converti_1eWK6
-  C:/amb_GAS/utility:454    .text:000002d1 indecimal_word
-  C:/amb_GAS/utility:455    .text:000002d1 indecimal_short
-  C:/amb_GAS/utility:465    .text:000002e8 indecimal_long
-GAS LISTING c:/amb_gas/gas/tmp/ccm5sAHh.s 			page 3
+                            *ABS*:00000000 fake
+               ES2.s:23     .text:0000036c _main
+  c:/amb_GAS/utility:8      .text:00000000 inchar
+  c:/amb_GAS/utility:44     .text:0000000c outchar
+  c:/amb_GAS/utility:114    .text:00000017 inbyte
+  c:/amb_GAS/utility:306    .text:000001bb inhexchar
+  c:/amb_GAS/utility:345    .text:000001fd HA2B8
+  c:/amb_GAS/utility:127    .text:00000039 inword
+  c:/amb_GAS/utility:133    .text:00000046 inlong
+  c:/amb_GAS/utility:134    .text:00000046 indword
+  c:/amb_GAS/utility:140    .text:00000054 outbyte
+  c:/amb_GAS/utility:327    .text:000001dd B8HA2
+  c:/amb_GAS/utility:150    .text:0000006a outword
+  c:/amb_GAS/utility:157    .text:00000079 outlong
+  c:/amb_GAS/utility:158    .text:00000079 outdword
+  c:/amb_GAS/utility:166    .text:0000008a newline
+  c:/amb_GAS/utility:180    .text:0000009b pause
+  c:/amb_GAS/utility:181    .text:0000009c pause0
+  c:/amb_GAS/utility:183    .text:000000a5 pause1
+  c:/amb_GAS/utility:185    .text:000000ae pause2
+  c:/amb_GAS/utility:187    .text:000000b7 pause3
+  c:/amb_GAS/utility:189    .text:000000c0 pause4
+  c:/amb_GAS/utility:191    .text:000000c9 pause5
+  c:/amb_GAS/utility:193    .text:000000d2 pause6
+  c:/amb_GAS/utility:195    .text:000000db pause7
+  c:/amb_GAS/utility:197    .text:000000e4 pause8
+  c:/amb_GAS/utility:199    .text:000000ed pause9
+  c:/amb_GAS/utility:221    .text:00000121 inline
+  c:/amb_GAS/utility:269    .text:00000180 outline
+  c:/amb_GAS/utility:289    .text:000001a2 outmess
+  c:/amb_GAS/utility:318    .text:000001d1 B4HA1
+  c:/amb_GAS/utility:337    .text:000001f3 HA1B4
+  c:/amb_GAS/utility:339    .text:000001f7 sub_0x30
+  c:/amb_GAS/utility:357    .text:00000217 outdecimal_byte
+  c:/amb_GAS/utility:358    .text:00000217 outdecimal_tiny
+  c:/amb_GAS/utility:375    .text:00000231 outdecimal_long
+  c:/amb_GAS/utility:364    .text:00000224 outdecimal_word
+  c:/amb_GAS/utility:365    .text:00000224 outdecimal_short
+  c:/amb_GAS/utility:372    .data:00000032 resti_cifre
+  c:/amb_GAS/utility:412    .text:00000281 long_L4013K
+  c:/amb_GAS/utility:416    .text:0000028c ciclolongL4013K
+  c:/amb_GAS/utility:443    .text:000002bc indecimal_byte
+  c:/amb_GAS/utility:444    .text:000002bc indecimal_tiny
+  c:/amb_GAS/utility:474    .data:00000041 num_cifre_1eWK7
+  c:/amb_GAS/utility:477    .text:000002f5 converti_1eWK6
+  c:/amb_GAS/utility:454    .text:000002d1 indecimal_word
+  c:/amb_GAS/utility:455    .text:000002d1 indecimal_short
+  c:/amb_GAS/utility:465    .text:000002e8 indecimal_long
+  c:/amb_GAS/utility:473    .data:0000003d prodotti_parziali_1eWK7
+  c:/amb_GAS/utility:479    .text:000002f7 P_di_0_1eWK7
+  c:/amb_GAS/utility:481    .text:00000301 ciclo_1eWK7
+  c:/amb_GAS/utility:504    .text:00000343 fine_1eWK7
+  c:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
+  c:/amb_GAS/utility:514    .text:0000034a exit
+  c:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
+               ES2.s:19     .data:0000005c X
+GAS LISTING ES2.s 			page 3
 
 
-  C:/amb_GAS/utility:473    .data:0000003d prodotti_parziali_1eWK7
-  C:/amb_GAS/utility:479    .text:000002f7 P_di_0_1eWK7
-  C:/amb_GAS/utility:481    .text:00000301 ciclo_1eWK7
-  C:/amb_GAS/utility:504    .text:00000343 fine_1eWK7
-  C:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
-  C:/amb_GAS/utility:514    .text:0000034a exit
-  C:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
-               ES1.S:8      .data:0000005c msg_in
-               ES1.S:9      .data:000000ac msg_out
-               ES1.S:21     .text:00000388 inizio
-               ES1.S:36     .text:00000394 poi
-               ES1.S:44     .text:0000039c fine
+               ES2.s:20     .data:0000005d Y
+               ES2.s:26     .text:00000376 input_x
+               ES2.s:40     .text:0000039b input_y
+               ES2.s:109    .text:0000046d fine
+               ES2.s:58     .text:000003d6 moltiplica
+               ES2.s:105    .text:00000463 termina
 
 NO UNDEFINED SYMBOLS
