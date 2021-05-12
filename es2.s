@@ -21,6 +21,7 @@ Y:          .BYTE 0
 
 .TEXT
 _main:
+        NOP
         MOV $0, %EAX
         MOV $0, %ECX
 input_x:
