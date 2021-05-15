@@ -16,71 +16,80 @@
 .INCLUDE "c:/amb_GAS/utility"
 
 .DATA
-X:          .BYTE 0
+X:          .FILL 6, 1
 Y:          .BYTE 0
 
 .TEXT
 _main:
         NOP
-        MOV $0, %EAX
         MOV $0, %ECX
-input_x:
+input:
         CALL inchar
-        CMP $'0', %AL
-        JB input_x
+        CMP $'0', %AL 
+        JB input
         CMP $'9', %AL
-        JA input_x
+        JA input
+        CMP $6, %ECX
+        JE controllo_Y
         CALL outchar
         SUB $'0', %AL
-        MOV %AL, X(%ECX, 1)
+        MOV %AL, X(%ECX)
         INC %ECX
-        CMP $6, %ECX
-        JNE input_x
-
+        JMP input
+controllo_Y: 
         CALL newline
-input_y:
-        CALL inchar
-        CMP $'0', %AL
-        JB input_y
-        CMP $'9', %AL
-        JA input_y
         CALL outchar
+        CMP $'0', %AL 
+        JE fine
         SUB $'0', %AL
         MOV %AL, Y
+        CALL newline
+        CALL newline
         
+        MOV $0, %ESI 
+        MOV $0, %EDX
+        MOV $10, %DH
+divisione:
+        MOV Y, %BL      # divisore
+        MOV $0, %AX
+        MOV X(%ESI), %AL
+        ADD %DL, %AL
+        MOV %AL, %CL    # dividendo in CL
+        DIV %BL
+        MOV %AL, %CH    # q in CH
+        CALL stampa
+        MOV %AH, %DL    # resto * 10
+        MUL %DH
+        MOV %AL, %DL    # resto in DL
+        CMP $5, %ESI
+        JE nl
+        INC %ESI 
+        JMP divisione
+nl:
         CALL newline
-        CMP $0, %AL
-        JE fine
         CALL newline
+        JMP _main
+fine:
+        RET
 
-        MOV $0, %EAX
-        MOV $5, %ECX
-        MOV X(%ECX, 1), %AL
-moltiplica:
-        CMP $0, %EAX
-        JE termina
-        MOV $0, %EBX
-        MOV Y, %BL
-        CALL outdecimal_long
-        PUSH %EAX
+# sottoprogramma
+stampa:
+        MOV %CL, %AL
+        CALL outdecimal_byte
         MOV $'/', %AL
         CALL outchar
+        MOV Y, %AL
+        CALL outdecimal_byte
         MOV $':', %AL
         CALL outchar
         MOV $' ', %AL
         CALL outchar
-        POP %EAX
-        
-        DIV %EBX
-
-        PUSH %EAX
         MOV $'q', %AL
         CALL outchar
         MOV $'=', %AL
         CALL outchar
-        POP %EAX
-        CALL outdecimal_long
-        PUSH %EAX
+        MOV %CH, %AL
+        CALL outdecimal_byte
         MOV $',', %AL
         CALL outchar
         MOV $' ', %AL
@@ -89,27 +98,10 @@ moltiplica:
         CALL outchar
         MOV $'=', %AL
         CALL outchar
-        MOV %EDX, %EAX
-        CALL outdecimal_long
-        POP %EAX
-        CMP $0, %ECX
-        JE termina
-        DEC %ECX
-        MOV $0, %EAX
-        MOV X(%ECX, 1), %AL
-        PUSH %EAX
-        MOV $10, %EAX
-        MUL %EDX
-        POP %EAX
-        ADD %EDX, %EAX
-        JMP moltiplica
-termina:
+        MOV %AH, %AL
+        CALL outdecimal_byte
         CALL newline
-        JMP _main
-
-fine:
         RET
-
 /*
     output atteso:
 

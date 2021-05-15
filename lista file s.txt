@@ -1,4 +1,4 @@
 es1,    trasforma messaggio in lettere maiuscole    FUNZIONA
-es2,    3o appello 2021 (16 Febbraio 2021)          NON RISOLTO
+es2,    3o appello 2021 (16 Febbraio 2021)          FUNZIONA
 es3,    2o appello 2021 (26 Gennaio 2021)           NON RISOLTO
 es4,    simulazione 12 dicembre 2020                FUNZIONA

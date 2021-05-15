@@ -14,82 +14,81 @@ Vengono accettate soltanto le codifiche di esattamente 2 cifre decimali.
 .INCLUDE "c:/amb_GAS/utility"
 
 .DATA
-A:      .BYTE 0
-B:      .BYTE 0
-C:      .BYTE 0
+A:      .FILL 2, 1
+B:      .FILL 2, 1
+C:      .FILL 3, 1
+a:      .WORD 0
+b:      .WORD 0
+
 
 .TEXT
 _main:
         NOP
         MOV $0, %ECX
-        MOV $0, %EAX
-input:
-        CMP $4, %CL 
+        MOV $0, %ESI
+input_A:
+        CMP $4, %ECX
         JE due
         CALL inchar
         CMP $'0', %AL
-        JB input
+        JB input_A
         CMP $'9', %AL
-        JA input
+        JA input_A
+        CMP $2, %ECX
+        JAE nl
         CALL outchar
-        
-        CMP $2, %CL
-        JA assegna_B
-assegna_A:
-        ADD $'0', %AL
-        MOV %AL, A(%ECX, 1)
-        INC %CL
-        CMP $2, %CL
-        JE nl 
-        JMP input
-assegna_B:
-        ADD $'0', %AL
-        MOV %ECX, %EDX
-        SUB $2, %EDX
-        MOV %AL, B(%EDX, 1)
-        INC %CL 
-        JMP input
+        MOV %AL, A(%ECX)
+        INC %ECX
+        JMP input_A
 nl:
+        CMP $2, %ECX
+        JNE input_B 
         CALL newline
-        JMP input
-due: 
-        # rappresentabile in complemento alla radice su 2 cifre in base dieci vuol dire:
-        # faccio somma C[0] = A[0]+B[0] C[1] = riporto+A[1]*10+B[1]*10, C[1] <= 9
-
-        MOV $0, %DL     # contiene riporto
-        MOV A, %AL
-        MOV B, %BL
-        ADD %BL, %AL
-        CMP $9, %AL
-        JA riporto
-        MOV %AL, C
-        JMP seconda_cifra
-riporto:
-        SUB $10, %AL
-        MOV %AL, C 
-        INC %DL
-seconda_cifra:
-        MOV $1, %ESI 
+input_B:
+        CALL outchar
+        MOV %ECX, %ESI
+        SUB $2, %ESI
+        MOV %AL, B(%ESI)
+        INC %ECX
+        JMP input_A
+due:
+        CALL newline
+        MOV $0, %ESI
+        MOV $0, %EBX
+        # compl alla radice b=10, n=2 --> a appartiene a [-50, 49], se A < 50 è positivo
+        # c sarà rappresentabile solo se appartiene a [-50, 49]
+        # faccio la somma C = |A+B|modulo1000 su 3 cifre in base10, se la 3° cifra != 0 è Overflow
         MOV A(%ESI), %AL
-        MOV B(%ESI), %BL
-        ADD %BL, %AL 
-        ADD %DL, %AL
-        CMP $9, %AL
-        JA errore
-        MOV %AL, C(%ESI, 1)
+        ADD B(%ESI), %AL
+        CMP $10, %AL
+        JB secondo_addendo
+        SUB $10, %AL
+        MOV $1, %BL
+secondo_addendo:
+        MOV %AL, C(%ESI)
+        INC %ESI
+        MOV A(%ESI), %AL
+        ADD %BL, %AL
+        ADD B(%ESI), %AL
+        CMP $10, %AL
+        JB stampa
+        XOR $1, %BL
+        CMP $1, %BL
+        JE fine
+stampa:
+        MOV %AL, C(%ESI)
 
-        MOV C, %AL
+        MOV $0, %ESI
+        MOV C(%ESI), %AL
         CALL outdecimal_byte
-        MOV C(%ESI, 1), %AL
+        INC %ESI
+        MOV C(%ESI), %AL
         CALL outdecimal_byte
+        CALL newline
         CALL newline
         JMP _main
-errore:
-        CALL newline
-        CALL newline
-        CALL newline
-        CALL newline
 fine:
+        CALL newline
         RET
 /*
 74
