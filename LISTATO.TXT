@@ -1,28 +1,36 @@
-GAS LISTING es2.s 			page 1
+GAS LISTING es5.s 			page 1
 
 
    1              	/*
-   2              	    Scrivere un programma in Assembler che svolge i seguenti compiti
-   3              	        1. richiede in ingresso due numeri naturali X ed Y in base 10, X a 6 cifre ed Y a 1 cifra, 
-   4              	        gli opportuni controlli. In particolare:
-   5              	            • Legge e fa eco di cifre in base 10, ignora e non fa eco di caratteri inattesi
-   6              	            • Vengono accettate soltanto codifiche dal numero esatto di cifre
-   7              	            • L’eco dei due input è fatto su due righe distinte
-   8              	        2. se Y = 0 termina, altrimenti
-   9              	        3. lascia una riga bianca ed esegue la divisione in base 10 di X per Y , per passaggi succe
-  10              	        stampando i risultati intermedi formattati come da esempio.
-  11              	        4. lascia una riga bianca e ritorna al punto 1.
-  12              	    
-  13              	    Si ponga attenzione alla formattazione di questo file, che fa parte delle specifiche.
-  14              	*/
-  15              	.GLOBAL _main
-  16              	.INCLUDE "c:/amb_GAS/utility"
-GAS LISTING es2.s 			page 2
+   2              	     Scrivere un programma che si comporta come segue:
+   3              	     1) stampa un punto interrogativo e legge con eco da tastiera
+   4              	        un numero naturale A in base 10, sotto l'ipotesi che stia su 16 bit
+   5              	     2) se il numero è minore o uguale ad 1, termina
+   6              	     3) altrimenti, stampa la sua scomposizione in fattori primi,
+   7              	        cioe' una lista di righe x^y, intendendo che il fattore primo x
+   8              	        e' contenuto in A alla sua potenza y-esima, con x>=2, y>=1.
+   9              	     4) attende la pressione di un tasto e termina.
+  10              	
+  11              	     Esempio:
+  12              	
+  13              	    ?338
+  14              	    2^1
+  15              	    13^2
+  16              	
+  17              	    ?199
+  18              	    199^1
+  19              	
+  20              	    ?1
+  21              	    [terminazione]
+  22              	*/
+  23              	.GLOBAL _main
+  24              	.INCLUDE "c:/amb_GAS/utility"
+GAS LISTING es5.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 fake
-               es2.s:23     .text:0000036c _main
+               es5.s:29     .text:0000036c _main
   c:/amb_GAS/utility:8      .text:00000000 inchar
   c:/amb_GAS/utility:44     .text:0000000c outchar
   c:/amb_GAS/utility:114    .text:00000017 inbyte
@@ -76,16 +84,14 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
   c:/amb_GAS/utility:514    .text:0000034a exit
   c:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
-               es2.s:19     .data:0000005c X
-GAS LISTING es2.s 			page 3
+               es5.s:78     .text:000003e6 fine
+GAS LISTING es5.s 			page 3
 
 
-               es2.s:20     .data:00000062 Y
-               es2.s:26     .text:00000372 input
-               es2.s:39     .text:00000394 controllo_Y
-               es2.s:72     .text:000003f9 fine
-               es2.s:52     .text:000003bf divisione
-               es2.s:76     .text:000003fa stampa
-               es2.s:68     .text:000003ea nl
+               es5.s:43     .text:00000388 controllo
+               es5.s:74     .text:000003da nl
+               es5.s:47     .text:00000391 fatt
+               es5.s:55     .text:000003a5 non_div
+               es5.s:61     .text:000003b2 stampa
 
 NO UNDEFINED SYMBOLS
