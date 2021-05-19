@@ -1,34 +1,24 @@
-GAS LISTING es6.s 			page 1
+GAS LISTING es7.s 			page 1
 
 
    1              	/*
    2              	    Scrivere un programma Assembler che si comporta come segue:
-   3              	    1. Chiede in ingresso un numero INTERO x in base 10, 
-   4              	       rappresentato in modulo e segno, supponendo che il modulo stia su 8 bit
-   5              	    2. aggiunge il numero x digitato, ad un accumulatore s, che sta su *10 bit*
-   6              	       (1 bit di segno e 9 di modulo). s è¨ inizialmente pari a zero.
-   7              	       Se l'operazione di somma algebrica ritorna un numero non rappresentabile
-   8              	       su 10 bit in modulo e segno, stampa "overflow" e termina. 
-   9              	       Altrimenti stampa s in modulo e segno.
-  10              	     Esempio:
-  11              	     ?+255
-  12              	     +255
-  13              	     ?-20
-  14              	     +235
-  15              	     ?+255
-  16              	     +490
-  17              	     ?+255
-  18              	     overflow
-  19              	*/ 
-  20              	
-  21              	.GLOBAL _main
-  22              	.INCLUDE "c:/amb_GAS/utility"
-GAS LISTING es6.s 			page 2
+   3              	    1. legge da tastiera un numero naturale A in base 10,
+   4              	        A sta su 32 bit,
+   5              	    2. se A è nullo termina, altrimenti:
+   6              	    3. stampa A in tutte le basi da 2 a 9 su righe successive
+   7              	       premettendo a ciascuna sequenza la base a cui si riferisce
+   8              	    4. torna al punto 1
+   9              	*/
+  10              	
+  11              	.GLOBAL _main
+  12              	.INCLUDE "c:/amb_GAS/utility"
+GAS LISTING es7.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 fake
-               es6.s:28     .text:0000036c _main
+               es7.s:19     .text:0000036c _main
   c:/amb_GAS/utility:8      .text:00000000 inchar
   c:/amb_GAS/utility:44     .text:0000000c outchar
   c:/amb_GAS/utility:114    .text:00000017 inbyte
@@ -82,20 +72,14 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
   c:/amb_GAS/utility:514    .text:0000034a exit
   c:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
-               es6.s:25     .data:0000005c msg
-GAS LISTING es6.s 			page 3
+               es7.s:15     .data:0000005c A
+GAS LISTING es7.s 			page 3
 
 
-               es6.s:32     .text:00000373 inizio
-               es6.s:36     .text:0000037e input_s
-               es6.s:41     .text:00000389 seconda_cond
-               es6.s:44     .text:0000038d input_mod
-               es6.s:67     .text:000003c4 concordi
-               es6.s:52     .text:000003a2 discordi
-               es6.s:60     .text:000003b4 x_meno_s
-               es6.s:69     .text:000003c7 rappr
-               es6.s:76     .text:000003da stampa
-               es6.s:83     .text:000003f0 ow
-               es6.s:91     .text:00000403 fine
+               es7.s:16     .data:00000060 base_corrente
+               es7.s:55     .text:000003d5 fine
+               es7.s:29     .text:00000388 nuova_base
+               es7.s:42     .text:000003b2 divisione
+               es7.s:49     .text:000003c5 stampa
 
 NO UNDEFINED SYMBOLS
