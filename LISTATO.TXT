@@ -1,37 +1,28 @@
-GAS LISTING c:/amb_gas/gas/tmp/ccE1i5w5.s 			page 1
+GAS LISTING es8.s 			page 1
 
 
-   1              	# 1 "PALIND~1.S"
-   2              	# 1 "c:/work//"
-   0:c:/work//     **** 
    1              	/*
-   0:<built-in>    **** 
-   0:<command line> **** 
-   1:c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver **** #include <sys/version.h>
-   1:c:/amb_gas/gas/include/sys/version.h **** /* Copyright (C) 1999 DJ Delorie, see COPYING.DJ for details */
-   2:c:/amb_gas/gas/include/sys/version.h **** /* Copyright (C) 1998 DJ Delorie, see COPYING.DJ for details */
-   2              	...
-   2              	    verificare se una stringa di 8 bit in input è palindroma,
-   3              	    scrivere in output il risultato, se la stringa è 0 termina
-   4              	*/
-   5              	
-   6              	
-   7              	.GLOBAL _main
-   8              	.INCLUDE "c:/amb_GAS/utility"
-GAS LISTING c:/amb_gas/gas/tmp/ccE1i5w5.s 			page 2
+   2              	    Scrivere un programma che si comporta come segue:
+   3              	    1. legge con eco da tastiera una sequenza di cinque cifre binarie, da interpretare come
+   4              	       la rappresentazione di un numero intero n in complemento a due. Il programma deve fare
+   5              	       i necessari controlli in modo da accettare SOLTANTO le codifiche ASCII di ESATTAMENTE
+   6              	       5 cifre binarie;
+   7              	    2. se n è positivo, stampa la riga
+   8              	       n = <+...+>
+   9              	       altrimenti, se n è negativo, stampa la riga:
+  10              	       n = <-...->
+  11              	       dove il numero di caratteri '+' o '-' è uguale a ABS(n);
+  12              	    3. se n è uguale a zero termina, altrimenti torna al passo 1.
+  13              	*/
+  14              	
+  15              	.GLOBAL _main
+  16              	.INCLUDE "c:/amb_GAS/utility"
+GAS LISTING es8.s 			page 2
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 PALIND~1.S
-                            *ABS*:00000000 <command line>
-                            *ABS*:00000000 c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver
-                            *ABS*:00000000 c:/amb_gas/gas/include/sys/version.h
-                            *ABS*:00000000 c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver
-                            *ABS*:00000000 <command line>
-                            *ABS*:00000000 <built-in>
-                            *ABS*:00000000 c:/work//
-                            *ABS*:00000000 PALIND~1.S
-          PALIND~1.S:15     .text:0000036c _main
+                            *ABS*:00000000 fake
+               es8.s:21     .text:0000036c _main
   c:/amb_GAS/utility:8      .text:00000000 inchar
   c:/amb_GAS/utility:44     .text:0000000c outchar
   c:/amb_GAS/utility:114    .text:00000017 inbyte
@@ -78,9 +69,6 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:454    .text:000002d1 indecimal_word
   c:/amb_GAS/utility:455    .text:000002d1 indecimal_short
   c:/amb_GAS/utility:465    .text:000002e8 indecimal_long
-GAS LISTING c:/amb_gas/gas/tmp/ccE1i5w5.s 			page 3
-
-
   c:/amb_GAS/utility:473    .data:0000003d prodotti_parziali_1eWK7
   c:/amb_GAS/utility:479    .text:000002f7 P_di_0_1eWK7
   c:/amb_GAS/utility:481    .text:00000301 ciclo_1eWK7
@@ -88,13 +76,14 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
   c:/amb_GAS/utility:514    .text:0000034a exit
   c:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
-          PALIND~1.S:11     .data:0000005c msg_ok
-          PALIND~1.S:12     .data:00000066 msg_no
-          PALIND~1.S:19     .text:00000371 input
-          PALIND~1.S:62     .text:000003da fine
-          PALIND~1.S:38     .text:0000039c controllo
-          PALIND~1.S:55     .text:000003c4 non_palindroma
-          PALIND~1.S:51     .text:000003b8 palindroma
-          PALIND~1.S:58     .text:000003ce stampa
+               es8.s:25     .text:00000371 input
+GAS LISTING es8.s 			page 3
+
+
+               es8.s:77     .text:000003f0 fine
+               es8.s:53     .text:000003af positivo
+               es8.s:48     .text:000003a6 negativo
+               es8.s:55     .text:000003b1 stampa
+               es8.s:66     .text:000003d4 ciclo_segni
 
 NO UNDEFINED SYMBOLS

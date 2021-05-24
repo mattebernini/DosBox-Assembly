@@ -20,31 +20,34 @@
 .TEXT
 _main:  
             NOP
-            MOV $0, %CL     # conta 
+            MOV $4, %CL     # conta 
             MOV $0, %BL     # contiene n
 input:
             CALL inchar
             CMP $'0', %AL
-            JE mask
+            JB input
             CMP $'1', %AL
-            JE mask
-            JMP input
-mask:
+            JA input
             CALL outchar
+
             SUB $'0', %AL
             SHL %CL, %AL
             OR %AL, %BL 
-            INC %CL 
-            CMP $5, %CL
-            JNE input
-            MOV %BL, %AL
+            DEC %CL 
+            CMP $0, %CL
+            JGE input
+
             CMP $0, %BL
             JE fine
-            CMP %0xE0, %BL
+            CALL newline
+            MOV %BL, %AL
+            CALL outdecimal_byte
+                        # n=5, b=2, ca2 --> [-2^5/2; 2^5/2 - 1] --> [-16; 15]
+            CMP $15, %BL
             JBE positivo
 negativo:
             MOV $'-', %BH
-            OR $0xE0, %BL		# estendo da 5 a 8 bit la rappresentazione del numero intero
+            OR $0b11100000, %BL		# estendo da 5 a 8 bit la rappresentazione del numero intero
 			NEG %BL	
             JMP stampa     
 positivo:
