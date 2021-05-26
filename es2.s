@@ -22,86 +22,97 @@ Y:          .BYTE 0
 .TEXT
 _main:
         NOP
-        MOV $0, %ECX
-input:
+        MOV $0, %ESI
+inputX:
         CALL inchar
         CMP $'0', %AL 
-        JB input
+        JB inputX
         CMP $'9', %AL
-        JA input
-        CMP $6, %ECX
-        JE controllo_Y
+        JA inputX
         CALL outchar
         SUB $'0', %AL
-        MOV %AL, X(%ECX)
-        INC %ECX
-        JMP input
-controllo_Y: 
+        MOV %AL, X(%ESI)
+        INC %ESI
+        CMP $6, %ESI
+        JNE inputX
+inputY:
         CALL newline
-        CALL outchar
+        CALL inchar
         CMP $'0', %AL 
-        JE fine
+        JB inputY
+        CMP $'9', %AL
+        JA inputY
+        CALL outchar
         SUB $'0', %AL
         MOV %AL, Y
         CALL newline
+        CMP $0, %AL
+        JE fine
         CALL newline
-        
-        MOV $0, %ESI 
-        MOV $0, %EDX
-        MOV $10, %DH
-divisione:
+
+        # divisione sempre su 1 byte perchè q al max è 89 (7 bit)
+        MOV $0, %ESI
         MOV Y, %BL      # divisore
-        MOV $0, %AX
+        MOV $0, %DL     # conterrà il resto da molt per 10
+divisione:
+        MOV $0, %AH
         MOV X(%ESI), %AL
-        ADD %DL, %AL
-        MOV %AL, %CL    # dividendo in CL
+        PUSH %AX
+        MOV $10, %AL
+        MUL %DL
+        MOV %AX, %DX
+        POP %AX
+        ADD %DX, %AX
+        CALL stampa_op
         DIV %BL
-        MOV %AL, %CH    # q in CH
-        CALL stampa
-        MOV %AH, %DL    # resto * 10
-        MUL %DH
-        MOV %AL, %DL    # resto in DL
-        CMP $5, %ESI
-        JE nl
-        INC %ESI 
-        JMP divisione
-nl:
-        CALL newline
+        CALL stampa_ris
+        MOV %AH, %DL
+        INC %ESI
+        CMP $6, %ESI
+        JNE divisione
         CALL newline
         JMP _main
 fine:
         RET
 
-# sottoprogramma
-stampa:
-        MOV %CL, %AL
-        CALL outdecimal_byte
+stampa_op:
+        NOP
+        CALL outdecimal_word
+        PUSH %AX
         MOV $'/', %AL
         CALL outchar
-        MOV Y, %AL
+        MOV %BL, %AL
         CALL outdecimal_byte
         MOV $':', %AL
         CALL outchar
         MOV $' ', %AL
         CALL outchar
+        POP %AX
+        RET
+stampa_ris:
+        NOP
+        PUSH %AX
         MOV $'q', %AL
         CALL outchar
         MOV $'=', %AL
         CALL outchar
-        MOV %CH, %AL
+        POP %AX
         CALL outdecimal_byte
-        MOV $',', %AL
-        CALL outchar
+        PUSH %AX
         MOV $' ', %AL
         CALL outchar
         MOV $'r', %AL
         CALL outchar
         MOV $'=', %AL
         CALL outchar
+        POP %AX
+        MOV %AL, %DH
         MOV %AH, %AL
         CALL outdecimal_byte
+        MOV %DH, %AL
         CALL newline
         RET
+
 /*
     output atteso:
 

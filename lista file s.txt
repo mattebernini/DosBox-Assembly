@@ -1,9 +1,10 @@
 es1,    trasforma messaggio in lettere maiuscole    FUNZIONA
 es2,    3o appello 2021 (16 Febbraio 2021)          FUNZIONA
-es3,    2o appello 2021 (26 Gennaio 2021)           NON RISOLTO
+es3,    2o appello 2021 (26 Gennaio 2021)           FUNZIONA
 es4,    simulazione 12 dicembre 2020                FUNZIONA
 es5,    3o appello 2020 (18 Febbraio 2020)          FUNZIONA 
 es6,    2o appello 2020 (28 Gennaio 2020)           FUNZIONA
 es7,    1o appello 2020 (8 Gennaio 2020)            FUNZIONA
 es8,    7o appello 2019 (13 Settembre 2019)         FUNZIONA
 palindroma                                          FUNZIONA
+es9,    6o appello 2019 (16 Luglio 2019)            FUNZIONA
