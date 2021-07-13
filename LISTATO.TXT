@@ -1,45 +1,31 @@
-GAS LISTING c:/amb_gas/gas/tmp/cckpUjDn.s 			page 1
+GAS LISTING ex3.s 			page 1
 
 
-   1              	# 1 "ES2.S"
-   2              	# 1 "c:/work//"
-   0:c:/work//     **** 
    1              	/*
-   0:<built-in>    **** 
-   0:<command line> **** 
-   1:c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver **** #include <sys/version.h>
-   1:c:/amb_gas/gas/include/sys/version.h **** /* Copyright (C) 1999 DJ Delorie, see COPYING.DJ for details */
-   2:c:/amb_gas/gas/include/sys/version.h **** /* Copyright (C) 1998 DJ Delorie, see COPYING.DJ for details */
-   2              	...
-   2:ES2.S         ****     Scrivere un programma in Assembler che svolge i seguenti compiti
-   3:ES2.S         ****         1. richiede in ingresso due numeri naturali X ed Y in base 10, X a 6 cifre ed Y a 1 cifra, 
-   4:ES2.S         ****         gli opportuni controlli. In particolare:
-   5:ES2.S         ****             • Legge e fa eco di cifre in base 10, ignora e non fa eco di caratteri inattesi
-   6:ES2.S         ****             • Vengono accettate soltanto codifiche dal numero esatto di cifre
-   7:ES2.S         ****             • L’eco dei due input è fatto su due righe distinte
-   8:ES2.S         ****         2. se Y = 0 termina, altrimenti
-   9:ES2.S         ****         3. lascia una riga bianca ed esegue la divisione in base 10 di X per Y , per passaggi succe
-  10:ES2.S         ****         stampando i risultati intermedi formattati come da esempio.
-  11:ES2.S         ****         4. lascia una riga bianca e ritorna al punto 1.
-  12:ES2.S         ****     
-  13:ES2.S         ****     Si ponga attenzione alla formattazione di questo file, che fa parte delle specifiche.
-  14:ES2.S         **** */
-  15:ES2.S         **** .GLOBAL _main
-  16              	.INCLUDE "c:/amb_GAS/utility"
-GAS LISTING c:/amb_gas/gas/tmp/cckpUjDn.s 			page 2
+   2              	    Scrivere un programma che si comporta come segue:
+   3              	
+   4              	    1. legge con eco da tastiera una stringa di lettere minuscole 
+   5              	       terminata da ritorno carrello;
+   6              	    2. legge con eco da tastiera una lettera minuscola;
+   7              	    3. stampa sulla riga il numero di occorrenze nella stringa della lettera;
+   8              	    4. se il numero di occorrenze è maggiore di uno torna al passo 2, altrimenti termina.
+   9              	
+  10              	    Esempio:
+  11              	    aabcdddhbbc
+  12              	    a 2
+  13              	    d 3
+  14              	    f 0
+  15              	*/
+  16              	
+  17              	.GLOBAL _main
+  18              	
+  19              	.INCLUDE "c:/amb_GAS/utility"
+GAS LISTING ex3.s 			page 2
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 ES2.S
-                            *ABS*:00000000 <command line>
-                            *ABS*:00000000 c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver
-                            *ABS*:00000000 c:/amb_gas/gas/include/sys/version.h
-                            *ABS*:00000000 c:/amb_gas/gas/bin/../lib/gcc/djgpp/4.10/djgpp.ver
-                            *ABS*:00000000 <command line>
-                            *ABS*:00000000 <built-in>
-                            *ABS*:00000000 c:/work//
-                            *ABS*:00000000 ES2.S
-               ES2.S:23     .text:0000036c _main
+                            *ABS*:00000000 fake
+               ex3.s:26     .text:0000036c _main
   c:/amb_GAS/utility:8      .text:00000000 inchar
   c:/amb_GAS/utility:44     .text:0000000c outchar
   c:/amb_GAS/utility:114    .text:00000017 inbyte
@@ -86,9 +72,6 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:454    .text:000002d1 indecimal_word
   c:/amb_GAS/utility:455    .text:000002d1 indecimal_short
   c:/amb_GAS/utility:465    .text:000002e8 indecimal_long
-GAS LISTING c:/amb_gas/gas/tmp/cckpUjDn.s 			page 3
-
-
   c:/amb_GAS/utility:473    .data:0000003d prodotti_parziali_1eWK7
   c:/amb_GAS/utility:479    .text:000002f7 P_di_0_1eWK7
   c:/amb_GAS/utility:481    .text:00000301 ciclo_1eWK7
@@ -96,13 +79,12 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
   c:/amb_GAS/utility:514    .text:0000034a exit
   c:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
-               ES2.S:19     .data:0000005c X
-               ES2.S:20     .data:00000062 Y
-               ES2.S:26     .text:00000372 inputX
-               ES2.S:38     .text:00000392 inputY
-               ES2.S:75     .text:000003ff fine
-               ES2.S:57     .text:000003cb divisione
-               ES2.S:78     .text:00000400 stampa_op
-               ES2.S:92     .text:00000427 stampa_ris
+               ex3.s:22     .data:0000005c conta
+GAS LISTING ex3.s 			page 3
+
+
+               ex3.s:30     .text:00000374 leggi
+               ex3.s:44     .text:00000397 occorrenze
+               ex3.s:61     .text:000003ce fine
 
 NO UNDEFINED SYMBOLS

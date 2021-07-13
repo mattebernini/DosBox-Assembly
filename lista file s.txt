@@ -8,3 +8,8 @@ es7,    1o appello 2020 (8 Gennaio 2020)            FUNZIONA
 es8,    7o appello 2019 (13 Settembre 2019)         FUNZIONA
 palindroma                                          FUNZIONA
 es9,    6o appello 2019 (16 Luglio 2019)            FUNZIONA
+ex1,    5o appello 2019 (16 Luglio 2019)            DIFETTOSO
+str1,   esercizion con istr. stringa                FUNZIONA
+str2,   media vettore
+ex2,    3o appello 2019 (14 Febbraio 2019)          FUNZIONA
+ex3,    2o appello 2019 (29 Gennaio 2019)           FUNZIONA
