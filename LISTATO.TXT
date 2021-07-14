@@ -1,31 +1,30 @@
-GAS LISTING ex3.s 			page 1
+GAS LISTING ex4.s 			page 1
 
 
-   1              	/*
-   2              	    Scrivere un programma che si comporta come segue:
-   3              	
-   4              	    1. legge con eco da tastiera una stringa di lettere minuscole 
-   5              	       terminata da ritorno carrello;
-   6              	    2. legge con eco da tastiera una lettera minuscola;
-   7              	    3. stampa sulla riga il numero di occorrenze nella stringa della lettera;
-   8              	    4. se il numero di occorrenze è maggiore di uno torna al passo 2, altrimenti termina.
-   9              	
-  10              	    Esempio:
-  11              	    aabcdddhbbc
-  12              	    a 2
-  13              	    d 3
-  14              	    f 0
-  15              	*/
-  16              	
-  17              	.GLOBAL _main
-  18              	
-  19              	.INCLUDE "c:/amb_GAS/utility"
-GAS LISTING ex3.s 			page 2
+   1              	/*    
+   2              	    Scrivere un programma che:
+   3              	    1. legge con eco da tastiera una stringa di max 20 caratteri
+   4              	       terminata da un ritorno carrello;
+   5              	    2. stampa la stringa sostituendo ogni cifra decimale
+   6              	       con il nome della cifra, contornato da uno o piu' spazi; es. la stringa
+   7              	         a12bc
+   8              	       viene stampata come
+   9              	         a uno     due     bc
+  10              	    3. se la stringa inserita conteneva almeno un numero torna al passo 1,
+  11              	       altrimenti termina.
+  12              	     NB: Si consiglia di allineare tutte le stringhe da stampare sullo stesso numero di caratteri 
+  13              	         calcolato sul testo di lunghezza massima
+  14              	*/
+  15              	
+  16              	.GLOBAL _main
+  17              	
+  18              	.INCLUDE "c:/amb_GAS/utility"
+GAS LISTING ex4.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 fake
-               ex3.s:26     .text:0000036c _main
+               ex4.s:35     .text:0000036c _main
   c:/amb_GAS/utility:8      .text:00000000 inchar
   c:/amb_GAS/utility:44     .text:0000000c outchar
   c:/amb_GAS/utility:114    .text:00000017 inbyte
@@ -79,12 +78,26 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
   c:/amb_GAS/utility:514    .text:0000034a exit
   c:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
-               ex3.s:22     .data:0000005c conta
-GAS LISTING ex3.s 			page 3
+               ex4.s:21     .data:0000005c stringa
+GAS LISTING ex4.s 			page 3
 
 
-               ex3.s:30     .text:00000374 leggi
-               ex3.s:44     .text:00000397 occorrenze
-               ex3.s:61     .text:000003ce fine
+               ex4.s:22     .data:00000070 zero
+               ex4.s:23     .data:00000079 uno
+               ex4.s:24     .data:00000082 due
+               ex4.s:25     .data:0000008b tre
+               ex4.s:26     .data:00000094 quattro
+               ex4.s:27     .data:0000009d cinque
+               ex4.s:28     .data:000000a6 sei
+               ex4.s:29     .data:000000af sette
+               ex4.s:30     .data:000000b8 otto
+               ex4.s:31     .data:000000c1 nove
+               ex4.s:32     .data:000000ca numero
+               ex4.s:39     .text:00000377 leggi
+               ex4.s:49     .text:00000393 punto_due
+               ex4.s:53     .text:0000039f ciclo
+               ex4.s:69     .text:000003d9 stampa_lettera
+               ex4.s:72     .text:000003e4 fine_ciclo
+               ex4.s:80     .text:000003f7 fine
 
 NO UNDEFINED SYMBOLS
