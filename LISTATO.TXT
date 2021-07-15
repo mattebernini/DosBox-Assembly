@@ -1,30 +1,28 @@
-GAS LISTING ex4.s 			page 1
+GAS LISTING ex5.s 			page 1
 
 
-   1              	/*    
-   2              	    Scrivere un programma che:
-   3              	    1. legge con eco da tastiera una stringa di max 20 caratteri
-   4              	       terminata da un ritorno carrello;
-   5              	    2. stampa la stringa sostituendo ogni cifra decimale
-   6              	       con il nome della cifra, contornato da uno o piu' spazi; es. la stringa
-   7              	         a12bc
-   8              	       viene stampata come
-   9              	         a uno     due     bc
-  10              	    3. se la stringa inserita conteneva almeno un numero torna al passo 1,
-  11              	       altrimenti termina.
-  12              	     NB: Si consiglia di allineare tutte le stringhe da stampare sullo stesso numero di caratteri 
-  13              	         calcolato sul testo di lunghezza massima
-  14              	*/
+   1              	/*
+   2              	    Scrivere un programma che si comporta come segue:
+   3              	    1. legge con eco da tastiera due numeri naturali A e B di 2 cifre in base 10
+   4              	    2. se A e B non sono entrambi compresi tra 2 e 20, estremi inclusi, termina
+   5              	    3. altrimenti, lascia una riga vuota e stampa a video un rettangolo di base A ed altezza B
+   6              	    così fatto:
+   7              	    • se A ≥ B, la cornice è fatta di caratteri 0 e l’interno di 1
+   8              	    • altrimenti, la cornice è fatta di caratteri 1 e l’interno di 0
+   9              	    4. lascia una riga vuota e ritorna al punto 1.
+  10              	    Nota: durante ogni lettura, un qualunque carattere inatteso dovrà essere ignorato, e il
+  11              	    programma dovrà rimanere in attesa di un carattere corretto.
+  12              	*/
+  13              	
+  14              	.GLOBAL _main
   15              	
-  16              	.GLOBAL _main
-  17              	
-  18              	.INCLUDE "c:/amb_GAS/utility"
-GAS LISTING ex4.s 			page 2
+  16              	.INCLUDE "c:/amb_GAS/utility"
+GAS LISTING ex5.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 fake
-               ex4.s:35     .text:0000036c _main
+               ex5.s:23     .text:0000036c _main
   c:/amb_GAS/utility:8      .text:00000000 inchar
   c:/amb_GAS/utility:44     .text:0000000c outchar
   c:/amb_GAS/utility:114    .text:00000017 inbyte
@@ -78,26 +76,22 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
   c:/amb_GAS/utility:514    .text:0000034a exit
   c:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
-               ex4.s:21     .data:0000005c stringa
-GAS LISTING ex4.s 			page 3
+               ex5.s:19     .data:0000005c A
+GAS LISTING ex5.s 			page 3
 
 
-               ex4.s:22     .data:00000070 zero
-               ex4.s:23     .data:00000079 uno
-               ex4.s:24     .data:00000082 due
-               ex4.s:25     .data:0000008b tre
-               ex4.s:26     .data:00000094 quattro
-               ex4.s:27     .data:0000009d cinque
-               ex4.s:28     .data:000000a6 sei
-               ex4.s:29     .data:000000af sette
-               ex4.s:30     .data:000000b8 otto
-               ex4.s:31     .data:000000c1 nove
-               ex4.s:32     .data:000000ca numero
-               ex4.s:39     .text:00000377 leggi
-               ex4.s:49     .text:00000393 punto_due
-               ex4.s:53     .text:0000039f ciclo
-               ex4.s:69     .text:000003d9 stampa_lettera
-               ex4.s:72     .text:000003e4 fine_ciclo
-               ex4.s:80     .text:000003f7 fine
+               ex5.s:20     .data:0000005d B
+               ex5.s:25     .text:0000036d in_A1
+               ex5.s:37     .text:0000038f in_A2
+               ex5.s:49     .text:000003b3 in_B1
+               ex5.s:61     .text:000003d5 in_B2
+               ex5.s:71     .text:000003f4 cond_uscita
+               ex5.s:107    .text:00000463 fine
+               ex5.s:91     .text:00000438 cornice0
+               ex5.s:111    .text:00000464 stampa_cornice
+               ex5.s:97     .text:00000444 ciclo_altezza
+               ex5.s:124    .text:0000047a stampa_interno
+               ex5.s:115    .text:00000469 ciclo_cornice
+               ex5.s:130    .text:00000486 ciclo_interno
 
 NO UNDEFINED SYMBOLS

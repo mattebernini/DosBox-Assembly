@@ -13,4 +13,5 @@ str1,   esercizion con istr. stringa                FUNZIONA
 str2,   media vettore
 ex2,    3o appello 2019 (14 Febbraio 2019)          FUNZIONA
 ex3,    2o appello 2019 (29 Gennaio 2019)           FUNZIONA
-ex4,    1o appello 2019 (8 Gennaio 2019)
+ex4,    1o appello 2019 (8 Gennaio 2019)            FUNZIONA
+ex5,    2o appello 2021 (30 Giugno 2021)            FUNZIONA
