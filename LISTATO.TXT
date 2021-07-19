@@ -1,28 +1,46 @@
-GAS LISTING ex5.s 			page 1
+GAS LISTING ex6.s 			page 1
 
 
    1              	/*
    2              	    Scrivere un programma che si comporta come segue:
-   3              	    1. legge con eco da tastiera due numeri naturali A e B di 2 cifre in base 10
-   4              	    2. se A e B non sono entrambi compresi tra 2 e 20, estremi inclusi, termina
-   5              	    3. altrimenti, lascia una riga vuota e stampa a video un rettangolo di base A ed altezza B
-   6              	    così fatto:
-   7              	    • se A ≥ B, la cornice è fatta di caratteri 0 e l’interno di 1
-   8              	    • altrimenti, la cornice è fatta di caratteri 1 e l’interno di 0
-   9              	    4. lascia una riga vuota e ritorna al punto 1.
-  10              	    Nota: durante ogni lettura, un qualunque carattere inatteso dovrà essere ignorato, e il
-  11              	    programma dovrà rimanere in attesa di un carattere corretto.
-  12              	*/
+   3              	    1. legge da tastiera e stampa su una riga dieci cifre decimali
+   4              	    2. legge un carattere da tastiera senza eco
+   5              	    3. in base al carattere letto, compie una delle seguenti operazioni:
+   6              	    s : ruota di una posizione a sinistra l’ultima stringa stampata e la stampa su una
+   7              	    nuova riga, quindi torna al punto 2;
+   8              	    d : ruota di una posizione a destra l’ultima stringa stampata e la stampa su una nuova
+   9              	    riga, quindi torna al punto 2;
+  10              	    r : inverte l’ordine degli elementi dell’ultima stringa stampata e la stampa su una
+  11              	    nuova riga, quindi torna al punto 2;
+  12              	    q : termina;
   13              	
-  14              	.GLOBAL _main
-  15              	
-  16              	.INCLUDE "c:/amb_GAS/utility"
-GAS LISTING ex5.s 			page 2
+  14              	    Nota: durante ogni lettura, un qualunque carattere inatteso dovrà essere ignorato, e il
+  15              	    programma dovrà rimanere in attesa di un carattere corretto.
+  16              	
+  17              	    Esempio
+  18              	    Assumendo che la sequenza di caratteri battuti sulla tastiera sia
+  19              	    0003334567
+  20              	    sss ?d! srsq
+  21              	    Sullo schermo dovrà comparire la seguente sequenza di stringhe:
+  22              	    0003334567
+  23              	    0033345670
+  24              	    0333456700
+  25              	    3334567000
+  26              	    0333456700
+  27              	    3334567000
+  28              	    0007654333
+  29              	    0076543330
+  30              	*/
+  31              	
+  32              	.GLOBAL _main
+  33              	
+  34              	.INCLUDE "c:/amb_GAS/utility"
+GAS LISTING ex6.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 fake
-               ex5.s:23     .text:0000036c _main
+               ex6.s:40     .text:0000036c _main
   c:/amb_GAS/utility:8      .text:00000000 inchar
   c:/amb_GAS/utility:44     .text:0000000c outchar
   c:/amb_GAS/utility:114    .text:00000017 inbyte
@@ -76,22 +94,21 @@ DEFINED SYMBOLS
   c:/amb_GAS/utility:483    .text:0000030a new_cifra_1eWK7
   c:/amb_GAS/utility:514    .text:0000034a exit
   c:/amb_GAS/utility:521    .text:0000035f waitQ_LZc247A
-               ex5.s:19     .data:0000005c A
-GAS LISTING ex5.s 			page 3
+               ex6.s:37     .data:0000005c stringa
+GAS LISTING ex6.s 			page 3
 
 
-               ex5.s:20     .data:0000005d B
-               ex5.s:25     .text:0000036d in_A1
-               ex5.s:37     .text:0000038f in_A2
-               ex5.s:49     .text:000003b3 in_B1
-               ex5.s:61     .text:000003d5 in_B2
-               ex5.s:71     .text:000003f4 cond_uscita
-               ex5.s:107    .text:00000463 fine
-               ex5.s:91     .text:00000438 cornice0
-               ex5.s:111    .text:00000464 stampa_cornice
-               ex5.s:97     .text:00000444 ciclo_altezza
-               ex5.s:124    .text:0000047a stampa_interno
-               ex5.s:115    .text:00000469 ciclo_cornice
-               ex5.s:130    .text:00000486 ciclo_interno
+               ex6.s:43     .text:00000372 leggi
+               ex6.s:54     .text:00000390 comando
+               ex6.s:67     .text:000003ac ruota_sx
+               ex6.s:80     .text:000003cf ruota_dx
+               ex6.s:92     .text:000003ec palindroma
+               ex6.s:109    .text:00000423 fine
+               ex6.s:70     .text:000003b3 ciclo_ruota_sx
+               ex6.s:106    .text:00000419 stampa
+               ex6.s:83     .text:000003d6 ciclo_ruota_dx
+               ex6.s:96     .text:000003f8 ciclo_palindroma
+               ex6.s:115    .text:00000424 stampa_stringa
+               ex6.s:118    .text:0000042a ciclo_stampa
 
 NO UNDEFINED SYMBOLS
